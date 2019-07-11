@@ -3,9 +3,9 @@
 struct stack
 {
 	int s[100];
-	static int top=-1;
+	int top;
 };
-
+void initiate(struct stack st);
 void push(struct stack st);
 int pop(struct stack st);
 void display(struct stack st);
@@ -16,6 +16,9 @@ int main()
 	scanf("%d",&n);
 
 	struct stack Stacks[n];
+	
+	for(i=0;i<n;i++)
+		initiate(Stacks[i]);
 	
 	do
 	{
@@ -46,6 +49,10 @@ int main()
 	}while(i!=-1);
 	
 }
+void initiate(struct stack st)
+{
+	st.top=-1;
+}
 void push(struct stack st)
 {
 	int new_n;
@@ -55,9 +62,10 @@ void push(struct stack st)
 		return;
 	}
 	else{
-		printf("Enter a new number:\n");
+		
+		printf("Enter a new number top=%d:\n",st.top);
 		scanf("%d",&new_n);
-		st.s[++top]=new_n;
+		st.s[++(st.top)]=new_n;
 	}	
 }
 int pop(struct stack st)
@@ -69,7 +77,7 @@ int pop(struct stack st)
 		return -99999;
 	}
 	else
-		return st.s[top--];
+		return st.s[(st.top)--];
 	
 }
 void display(struct stack st)
