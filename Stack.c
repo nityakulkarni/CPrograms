@@ -8,6 +8,7 @@ struct stack
 
 void push(struct stack st);
 int pop(struct stack st);
+void display(struct stack st);
 int main()
 {
 	int n,i=0,ch,del_n;
@@ -22,24 +23,26 @@ int main()
 		printf("If you want to exit then press -1\n");
 		scanf("%d",&i);
 
+		do{
 
-		printf("1. Push\n 2. Pop\n 3. Display\n 4. Exit from operations for this stack\n");
-		printf("Enter your choice for the operation:\n");
-		scanf("%d",&ch);
+			printf("1. Push\n 2. Pop\n 3. Display\n 4. Exit from operations for this stack\n");
+			printf("Enter your choice for the operation:\n");
+			scanf("%d",&ch);
 		
-		switch(ch)
-		{
-			case 1: push(Stacks[i]);
-				break;
-			case 2: del_n=pop(Stacks[i]);
-				if(del_n!=-99999)
-					printf("Popped Element=%d\n",del_n);
-				break;
-			case 3: display(Stacks[i]);
-				break;
-			case 4: break;
-
-		}
+			switch(ch)
+			{
+				case 1: push(Stacks[i]);
+					break;
+				case 2: del_n=pop(Stacks[i]);
+					if(del_n!=-99999)
+						printf("Popped Element=%d\n",del_n);
+					break;
+				case 3: display(Stacks[i]);
+					break;
+				case 4: break;
+	
+			}
+		}while(ch!=4);
 	}while(i!=-1);
 	
 }
